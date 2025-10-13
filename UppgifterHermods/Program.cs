@@ -120,6 +120,156 @@
 
             Console.WriteLine("\nProgrammet är slut");
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            // UPPGIFT 3: GISSA TALET - förbättrad version med do-while loop
+
+            // Skapa slumpmässigt tal mellan 1 och 100
+            int rightNr = new Random().Next(1, 101);
+            int playerGuess = 0; // spelarens gissning
+
+            // Input
+            Console.WriteLine("GISSA TALET");
+            Console.WriteLine("Du ska nu gissa ett tal mellan 1 - 100, så varsågod . .\n");
+
+            do
+            {
+                Console.Write("Skriv in ett tal: ");
+
+                // Kontrollera att användaren skriver ett heltal
+                if (!int.TryParse(Console.ReadLine(), out playerGuess))
+                {
+                    Console.WriteLine("Ogiltig inmatning! Du måste skriva ett heltal.\n");
+                    continue; // hoppar över resten av loopen och börjar om
+                }
+
+                // Kontrollera att talet är inom intervallet
+                if (playerGuess < 1 || playerGuess > 100)
+                {
+                    Console.WriteLine("Du måste skriva in ett tal mellan 1 och 100!\n");
+                    continue;
+                }
+
+                // Om talet är rätt
+                if (playerGuess == rightNr)
+                {
+                    Console.WriteLine("Du har gissat rätt! Bra jobbat!");
+                    break; // avsluta loopen
+                }
+
+                // Ge ledtrådar
+                if (playerGuess > rightNr)
+                {
+                    Console.WriteLine("Ditt tal är för stort. Försök med ett mindre.");
+                }
+                else
+                {
+                    Console.WriteLine("Ditt tal är för lågt. Försök med ett större.");
+                }
+
+                // Om man är nära (inom 3 steg)
+                if (Math.Abs(rightNr - playerGuess) <= 3)
+                {
+                    Console.WriteLine("Du är riktigt nära, det bränns!");
+                }
+
+                Console.WriteLine();
+
+            }
+            while (true);
+
+            Console.WriteLine("\nSpelet är slut. Tack för att du spelade!");
+            Thread.Sleep(1000);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            // UPPGIFT 4: Lottobollar och Bingo
+            // Denna uppgift simulerar en bingorad med 10 tal och kontrollerar
+            // om det slumpade talet finns i listan. Om det finns, skrivs "Bingo!".
+            // Skapa slumpgenerator
+            Random randomGenerator = new Random();
+
+            // Skapa lista 
+            List<int> bingoList = new List<int>();
+
+            Console.WriteLine("BINGO");
+            Console.WriteLine("Skriv in 10 tal mellan 1 och 20.\n");
+
+            // Användaren fyller i listan med 10 tal
+            for (int i = 1; i <= 10; i++)
+            {
+                Console.Write($"Ange tal {i}: ");
+
+                // Läser in tal å omvandlar 
+                int number = int.Parse(Console.ReadLine());
+
+                // Lägger till talet i listan
+                bingoList.Add(number);
+            }
+
+            Console.WriteLine("\nDina bingotal är:");
+            Console.WriteLine(string.Join(", ", bingoList));
+
+            // Slumpar fram ett tal 
+            int randomNumber = randomGenerator.Next(1, 21);
+            Console.WriteLine($"\nDen slumpade lottobollen är: {randomNumber}");
+
+            // Kontrollera om talet finns
+            bool bingo = false;
+
+            foreach (int number in bingoList)
+            {
+                if (number == randomNumber)
+                {
+                    bingo = true;
+                    break;
+                }
+            }
+
+            // Skriv ut resultat
+            if (bingo)
+            {
+                Console.WriteLine("BINGO! Du hade numret på din rad!");
+            }
+            else
+            {
+                Console.WriteLine("Tyvärr, ingen bingo den här gången.");
+            }
+
+            Console.WriteLine("\nTack för att du spelade!");
         }
     }
 }
