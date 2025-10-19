@@ -4,8 +4,129 @@
     {
         static void Main(string[] args)
         {
-            // UPPGIFT 1: PENSIONEN
-            Console.WriteLine("Välkomna till denna pensionssimulator.\n");
+
+            // UPPGIFT 1: UPPVÄRMNING INFÖR BASTU
+            {
+                // 1. Be användaren skriva in temperatur i Fahrenheit
+                Console.Write("Ange temperaturen i Fahrenheit: ");
+                int fahrenheit = int.Parse(Console.ReadLine());
+
+                // 2. Anropa metoden som omvandlar Fahrenheit till Celsius
+                int celsius = fahr_to_cel(fahrenheit);
+
+                // 3. Skriv ut resultatet i Celsius
+                Console.WriteLine($"{fahrenheit}°F motsvarar {celsius}°C");
+            }
+
+
+            // Metod som omvandlar Fahrenheit till Celsius och returnerar ett heltal
+            static int fahr_to_cel(int fahr)
+            {
+                // Formel: (Fahrenheit - 32) * 5 / 9
+                int cel = (fahr - 32) * 5 / 9;
+                return cel;
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            // UPPGIFT 2: BASTU
+            double celsiuss = 0; // Initiera temperaturen i Celsius
+            bool correctInput = false; // För att kontrollera inmatning
+
+            // Loopa tills temperaturen är mellan 82 och 87 grader
+            while (celsiuss < 82 || celsiuss > 87)
+            {
+                Console.Write("Ange temperaturen i Fahrenheit: ");
+
+                try
+                {
+                    // Läs in värde från användaren
+                    string input = Console.ReadLine();
+                    int fahrenheit = int.Parse(input); // kan orsaka fel -> fångas i catch
+
+                    // Anropa metoden som omvandlar Fahrenheit till Celsius
+                    celsiuss = fahr_to_cels(fahrenheit);
+
+                    // Kontrollera temperaturen
+                    if (celsiuss < 82)
+                    {
+                        Console.WriteLine($"Det är för kallt ({celsiuss:F1}°C).");
+                    }
+                    else if (celsiuss > 87)
+                    {
+                        Console.WriteLine($"Det är för varmt ({celsiuss:F1}°C).");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Temperaturen är nu lagom ({celsiuss:F1}°C).");
+                    }
+
+                    correctInput = true;
+                }
+                catch
+                {
+                    // Felhantering vid ogiltig inmatning
+                    Console.WriteLine("Fel inmatning! Ange ett heltal för Fahrenheit.");
+                }
+            }
+        
+
+        // Metod som konverterar Fahrenheit till Celsius och returnerar decimalvärde
+        static double fahr_to_cels(int fahr)
+        {
+            return (fahr - 32) * 5.0 / 9.0;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        // UPPGIFT 1: PENSIONEN
+        Console.WriteLine("Välkomna till denna pensionssimulator.\n");
 
 
             // Inmatning och felhantering
