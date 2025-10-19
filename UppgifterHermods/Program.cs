@@ -5,6 +5,35 @@
         static void Main(string[] args)
         {
 
+
+            // UPPGIFT 5: BUSSEN
+             
+            var myBus = new Bus();
+            myBus.Run();
+
+            Console.Write("Tryck på valfri tangent för att avsluta . . . ");
+            Console.ReadKey(true);
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             // UPPGIFT 1: UPPVÄRMNING INFÖR BASTU
             {
                 // 1. Be användaren skriva in temperatur i Fahrenheit
